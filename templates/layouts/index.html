@@ -1,0 +1,29 @@
+{% extends "layouts/menu.html" %}
+{% block content %}
+<div class="bg-secondary">
+<div class="container pt-3">
+    {% for item in recipes %}
+        <div class="card mb-3" >
+        <h4 class="card-header text-monospace "><a href="" class="text-dark">{{ item.title }}</a></h4>
+    <div class="row">
+        <div class="col-lg-3">
+            <a href="">
+                <img src="{{ item.photo.url }}" width="300" height="250"  alt=""/>
+            </a>
+        </div>
+            <div class="col-lg-7 pr-2">
+                <p class="card-text mb-1 font-weight-bold mt-3">Продукты: </p>
+                {% for p in item.products.all %}
+                <li class="card-subtitle ml-4">{{ p.name }}</li>
+                    {% endfor %}
+                <p class="card-text mt-4 mb-1 font-weight-bold">Способ приготовления: </p>
+                <p class="card-subtitle ml-4"> {{ item.recipe }}</p>
+                <p class="card-text font-weight-bold mt-4" >Время приготовления: {{ item.time}} мин</p>
+                <p class="card-text font-weight-bold mb-4">Калорийность: {{ item.calories}} ккал</p>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layouts/menu.html' %}
+
+{% block content %}
+    <div class="container pt-3 ">
+        <div class="col-md-9">
+            <h2>Регистрация</h2>
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+            </form>
+        </div>
+</div>
+{% endblock content %}

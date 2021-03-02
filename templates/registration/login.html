@@ -1,0 +1,29 @@
+{% extends "layouts/menu.html" %}
+{% block title  %}Вход{% endblock %}
+{% block content %}
+    <div class="container pt-3 ">
+        <div class="col-md-9">
+    <h2>Вход</h2>
+    {% if user.is_authenticated %}
+    <p>Вы уже выполнили вход</p>
+    {% else %}
+    <form method="post">
+    {% csrf_token %}
+
+    <div class="mt-3 rounded">
+        <p>Имя пользователя:</p>
+            {{ form.username }}
+        </div>
+
+        <div class="mt-3">
+            <p>Пароль:</p>
+            {{ form.password }}
+        </div>
+    <input type="hidden" name="next" value="{{ next }}">
+    <input type="submit" value="Войти" class="btn btn-success mt-3 ">
+    </form>
+
+    {% endif %}
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Книга рецептов{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<div >
+<h2 class="text-center mb-0 pt-3 text-monospace font-weight-light text-light" style="background-color:#4B5157">Моя книга рецептов <span class="badge badge-success font-italic">VEG</span></h2>
+
+<ul class="nav nav-tabs " style="background-color:#4B5157">
+    <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link active bg-secondary text-light ">Главная</a>
+    </li>
+    {% if user.is_staff %}
+    <li class="nav-item">
+        <a href="{% url 'add' %}" class="nav-link text-light">Добавить рецепт</a>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <li class="nav-item d-flex justify-content-end">
+            <a href="#" class="nav-link text-light">{{ user.username }}</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link text-light">Выход</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a href="{% url 'signin' %}" class="nav-link text-light">Вход</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'signup' %}" class="nav-link text-light" >Регистрация</a>
+        </li>
+    {% endif %}
+</ul>
+</div>
+<section>
+    {% block content %}
+    {% endblock %}
+</section>
+</body>
+</html>

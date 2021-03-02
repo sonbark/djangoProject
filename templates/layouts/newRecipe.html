@@ -1,0 +1,17 @@
+{% extends "layouts/menu.html" %}
+
+{% block title %}Добавление рецепта{% endblock %}
+{% block content %}
+    <div class="bg-secondary pt-3 pb-0">
+<div class="container rounded pl-5 mb-0 bg-light">
+<form method="post" enctype="multipart/form-data" >
+    <div class="pt-4 form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn-success rounded btn-lg mb-5" value="Добавить">
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock %}
+
